@@ -1,0 +1,45 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug MirAI Recorder (Chromium)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "https://webconf.comu.gouv.fr/fr-FR/meeting/75964",
+      "webRoot": "${workspaceFolder}",
+      "runtimeExecutable": "/Applications/Chromium.app/Contents/MacOS/Chromium",
+      "runtimeArgs": [
+        "--load-extension=${workspaceFolder}",
+        "--remote-debugging-port=9222"
+      ],
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/**/*.js"],
+      "userDataDir": "${workspaceFolder}/.vscode-chrome-profile"
+    },
+    {
+      "name": "Debug MirAI Recorder (Chrome — manual load)",
+      "type": "chrome",
+      "request": "launch",
+      "url": "chrome://extensions",
+      "webRoot": "${workspaceFolder}",
+      "runtimeExecutable": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+      "runtimeArgs": [
+        "--remote-debugging-port=9222"
+      ],
+      "sourceMaps": true,
+      "outFiles": ["${workspaceFolder}/**/*.js"],
+      "userDataDir": "${workspaceFolder}/.vscode-chrome-profile"
+    },
+    {
+      "name": "Debug MirAI Recorder (Firefox ESR)",
+      "type": "firefox",
+      "request": "launch",
+      "url": "about:debugging#/runtime/this-firefox",
+      "addonPath": "${workspaceFolder}",
+      "firefoxExecutable": "/Applications/Firefox.app/Contents/MacOS/firefox",
+      "reAttach": true,
+      "keepProfileChanges": true,
+      "profileDir": "${workspaceFolder}/.firefox-profile"
+    }
+  ]
+}

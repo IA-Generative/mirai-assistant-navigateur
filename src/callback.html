@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <title>MirAI — Connexion</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f0 100%);
+      color: #333;
+    }
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 48px 56px;
+      text-align: center;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      max-width: 420px;
+      animation: fadeIn 0.4s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 28px;
+      transition: all 0.5s ease;
+    }
+    .icon.loading { background: #fff3cd; color: #d29922; }
+    .icon.success { background: #d4edda; color: #2ea043; }
+    .icon.error { background: #f8d7da; color: #d73a49; }
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      transition: all 0.3s ease;
+    }
+    p {
+      font-size: 13px;
+      color: #666;
+      line-height: 1.5;
+    }
+    .progress {
+      margin-top: 20px;
+      height: 3px;
+      background: #e9ecef;
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-bar {
+      height: 100%;
+      background: #2ea043;
+      border-radius: 3px;
+      width: 0%;
+      transition: width 1.8s linear;
+    }
+    .brand {
+      margin-top: 24px;
+      font-size: 11px;
+      color: #aaa;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="icon loading" id="icon">&#9676;</div>
+    <h2 id="status">Connexion en cours</h2>
+    <p id="detail">Authentification SSO...</p>
+    <div class="progress" id="progress" style="display:none;">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
+    <div class="brand">MirAI Browser</div>
+  </div>
+  <script src="callback.js"></script>
+</body>
+</html>

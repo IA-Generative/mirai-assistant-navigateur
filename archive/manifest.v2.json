@@ -1,0 +1,57 @@
+{
+  "manifest_version": 2,
+  "name": "MirAI Recorder",
+  "version": "1.2.0",
+  "description": "MirAI Recorder – capture, enregistrement et intégration sécurisée des réunions (Chrome/Firefox, Manifest V2/V3).",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "tabs",
+    "storage",
+    "activeTab",
+    "identity",
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": [
+      "compat.js",
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true,
+    "open_in_tab": false
+  },
+  "web_accessible_resources": [
+    "popup.html",
+    "options.html",
+    "icons/icon16.png",
+    "icons/icon48.png",
+    "icons/icon128.png"
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "mirai-assistant@interieur.gouv.fr",
+      "strict_min_version": "128.11.0"
+    }
+  },
+  "applications": {
+    "gecko": {
+      "id": "mirai-assistant@interieur.gouv.fr",
+      "strict_min_version": "128.11.0"
+    }
+  }
+}

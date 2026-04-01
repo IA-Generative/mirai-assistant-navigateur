@@ -1,0 +1,11 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "kill-chrome",
+            "type": "shell",
+            "command": "pkill chrome || true",
+            "problemMatcher": []
+        }
+    ]
+}

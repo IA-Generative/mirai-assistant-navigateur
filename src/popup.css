@@ -1,0 +1,52 @@
+:root{font-family:system-ui,Arial,Helvetica,sans-serif}
+.container{width:360px;padding:12px}
+.url-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.url{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.fav{cursor:pointer;padding:4px}
+.rec-row{display:flex;gap:25px;align-items:center;justify-content:flex-start;min-height:90px; padding-left: 6px}
+.rec-btn{width:60px;height:60px;border-radius:50%;border:2px solid #ccc;background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;flex-shrink:0;transition:transform 0.2s ease, box-shadow 0.3s ease}
+.rec-light{width:28px;height:28px;border-radius:50%;background:#e0e0e0;display:block;transition:background 0.3s ease}
+.rec-btn.recording{border-color:#c33;animation:pulseRecBtn 3s infinite}
+.rec-btn.recording .rec-light{background:#c00;box-shadow:0 0 8px rgba(200,0,0,0.7)}
+.status{display:flex;flex-direction:column}
+#status-line{font-size:12px;color:#333}
+#timer{font-size:12px;color:#666}
+.credentials{margin-top:10px;display:flex;flex-direction:column;gap:6px}
+.password-row,.mp-row{display:flex;gap:6px}
+input{padding:6px;border:1px solid #ccc;border-radius:6px;flex:1}
+.small{padding:6px 8px;font-size:12px;border-radius:6px}
+.list-block{margin-top:10px}
+.list-title{font-weight:600;margin-bottom:6px}
+.history{list-style:none;padding:0;margin:0;max-height:140px;overflow:auto}
+.history li{padding:6px;border-bottom:1px solid #eee;display:flex;justify-content:space-between;align-items:center}
+.history li .meta{font-size:11px;color:#666}
+
+/* Pulsating animation for recording */
+@keyframes pulseRecBtn {
+  0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.6); }
+  70% { box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+}
+
+/* Style pour la liste des autres onglets */
+#tabs-list {
+  list-style-type: none;   /* Supprime les puces */
+  padding-left: 0;         /* Enlève le retrait gauche */
+  margin: 0;
+  text-align: left;        /* Aligne le texte à gauche */
+}
+
+#tabs-list li {
+  padding: 6px 0;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+#tabs-list li:hover {
+  background-color: #f6f6f6;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}

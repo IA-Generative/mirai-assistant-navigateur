@@ -1,0 +1,92 @@
+{
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwavhrodOcZjHJMjXs+0AB9SQfQjScQE8U5co4tZMBRWuYU3+a4dDtK2LYRgYIOQjfCy3rJNazhgRS4ur0Se+LvtwlEZO69vrY+68BnFrb3Y6erac8HafIRcafA9Frlg3U2wz0wp4D2HKMxSzLuY6R6crc2HnH1UnmA/kej7DbVlcNheRPI0VxsxsUlu0GcZT166Db5ia2vouyRj0SlF2JeFPSk/Zq9wNhCVLbvHVvOv0i++2Z+kx93WSq41BStStbJp0NP91HYGkpv+NFSMbsAZUjIR+v03CMo1VzjtMqyhUrEklZ1Qu7bQJOyufG9ruUqfZ77s1M11gvCgnKH6AQwIDAQAB",
+  "manifest_version": 3,
+  "name": "MirAI Recorder",
+  "version": "1.2.1",
+  "description": "MirAI Recorder – capture, enregistrement et intégration sécurisée des réunions (Chrome/Firefox, Manifest V2/V3).",
+
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+
+  "permissions": [
+    "tabs",
+    "storage",
+    "identity",
+    "activeTab",
+    "alarms",
+    "notifications"
+  ],
+
+  "host_permissions": [
+    "<all_urls>"
+  ],
+
+  "background": {
+    "service_worker": "src/background.js"
+  },
+
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+
+  "options_ui": {
+    "page": "src/options.html",
+    "open_in_tab": true
+  },
+
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "src/compat.js",
+        "src/popup.html",
+        "src/options.html",
+        "src/callback.html",
+        "icons/icon16.png",
+        "icons/icon48.png",
+        "icons/icon128.png"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ],
+
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.webconf.numerique.gouv.fr/*",
+        "*://webconf.numerique.gouv.fr/*",
+        "*://*.visio.numerique.gouv.fr/*",
+        "*://visio.numerique.gouv.fr/*",
+        "*://*.comu.gouv.fr/*",
+        "*://comu.gouv.fr/*",
+        "*://*.webinaire.numerique.gouv.fr/*",
+        "*://webinaire.numerique.gouv.fr/*",
+        "*://*.webex.com/*",
+        "*://meet.google.com/*",
+        "*://teams.microsoft.com/*",
+        "*://teams.live.com/*"
+      ],
+      "js": ["src/overlay.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "mirai-assistant@interieur.gouv.fr",
+      "strict_min_version": "128.11.0"
+    }
+  }
+}

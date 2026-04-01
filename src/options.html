@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>MirAI Assistant - Options</title>
+  <style>
+    :root { --gap: 8px; }
+    body {
+      font-family: system-ui;
+      padding: 12px;
+      padding-top: 4px;
+    }
+    form { display: flex; flex-direction: column; gap: 12px; margin-top: 0; }
+    .field { display: flex; align-items: center; gap: 12px; }
+    label { font-weight:600; width:100px; text-align:right; margin-left:-6px; }
+    input { padding:8px; border-radius:6px; border:1px solid #ccc; }
+    .w-24ch{width:22ch}
+    #show-pass{background:none;border:none;color:#0078d7;text-decoration:underline;cursor:pointer;margin-left:8px;}
+    .actions {
+      margin-top: 12px;
+      display: flex;
+      justify-content: flex-end;
+    }
+    h3 {
+      margin-top: 0;
+      margin-bottom: 4px;
+    }
+    
+    p:first-of-type {
+      margin-top: 0;
+    }
+
+  </style>
+</head>
+<body>
+  <p style="font-size:12px; color:#555; margin-bottom:20px;">
+    Le plug-in utilise vos identifiants MirAI, stockés localement de façon sécurisée dans votre navigateur et accessibles uniquement par vous. Pour l’instant, il n’est pas compatible avec ProConnect ; une évolution est en cours pour l’intégrer.
+  </p>
+  <h3>Votre Login MirAI</h3>
+  <form id="options-form" autocomplete="off">
+    <div class="field">
+      <label for="saveLogin">Login:</label>
+      <input id="saveLogin" class="w-24ch" placeholder="login" style="width:22ch;" />
+    </div>
+
+    <div class="field">
+      <label for="savePassword">Password:</label>
+      <input id="savePassword" class="w-24ch" type="password" placeholder="password" style="width:22ch; margin-left:4px;" />
+      <button id="show-pass" type="button">Afficher</button>
+    </div>
+
+    <div class="actions">
+      <button id="save" type="button">Enregistrer</button>
+    </div>
+  </form>
+
+  <script src="crypto.js"></script>
+  <script src="compat.js"></script>
+  <script src="dm/bootstrap.js"></script>
+  <script src="auth.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

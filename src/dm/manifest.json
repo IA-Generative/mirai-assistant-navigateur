@@ -1,0 +1,44 @@
+{
+  "slug": "mirai-browser",
+  "name": "MirAI Browser — Capture et transcription de reunions",
+  "description": "Extension Chrome/Firefox pour capturer, enregistrer et transcrire les reunions en ligne (Webconf, COMU, Webex, Google Meet, Teams).",
+  "intent": "Permettre aux agents de capturer et transcrire automatiquement leurs reunions en ligne.",
+  "device_type": "chrome",
+  "category": "productivity",
+  "publisher": "DTNUM",
+  "visibility": "public",
+  "maturity": "beta",
+  "homepage_url": "https://github.com/mirai-assistant-navigateur",
+  "support_email": "fabrique-numerique@interieur.gouv.fr",
+  "icon_url": "icons/icon128.png",
+  "doc_url": "https://mirai.interieur.gouv.fr/aide",
+  "license": "MPL-2.0",
+  "key_features": [
+    "Capture de reunions (Webconf, COMU, Webex, GMeet, Teams)",
+    "Authentification SSO Keycloak PKCE",
+    "Compatibilite Chrome et Firefox ESR 128+",
+    "Stockage chiffre des identifiants (AES-GCM)",
+    "Raccourcis vers les services MirAI",
+    "Detection automatique des plateformes",
+    "Enrollment et relay via Device Management"
+  ],
+  "changelog": [
+    {
+      "version": "1.2.1",
+      "date": "2026-03-31",
+      "changes": [
+        "Authentification PKCE partagee (auth.js)",
+        "Enrollment DM automatique apres login",
+        "Config centralisee multi-profils (dev/int/prod)",
+        "Convention alignee sur AssistantMiraiLibreOffice",
+        "Slug renomme mirai-browser",
+        "Build CRX/XPI avec scripts/build.sh"
+      ]
+    },
+    {
+      "version": "1.2.0",
+      "date": "2026-03-29",
+      "changes": ["Version initiale avec integration Device Management"]
+    }
+  ]
+}
