@@ -24,6 +24,23 @@
   ],
   "changelog": [
     {
+      "version": "1.2.2",
+      "date": "2026-04-02",
+      "changes": [
+        "Overlay flottant sur les pages de visio (content script draggable, auto-minimize)",
+        "Login PKCE via onglet normal (gestionnaire de mots de passe compatible)",
+        "Page callback avec confirmation visuelle de connexion",
+        "Support visio.numerique.gouv.fr (plateforme VISIO)",
+        "Badge REC rouge sur l'icone extension",
+        "Sync enregistrements avec l'API serveur au chargement",
+        "Detection CAPTURE_PENDING comme enregistrement actif",
+        "Point rouge pulsant dans la liste des onglets du popup",
+        "Lien de reconnexion SSO direct depuis l'overlay",
+        "Refresh token automatique periodique dans le popup",
+        "Bouton Overlay dans le popup pour forcer l'affichage"
+      ]
+    },
+    {
       "version": "1.2.1",
       "date": "2026-03-31",
       "changes": [

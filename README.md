@@ -1,6 +1,16 @@
-# MirAI Browser v1.2.1
+# MirAI Browser v1.2.2
 
 Extension Chrome/Firefox pour capturer et transcrire automatiquement les reunions en ligne.
+
+## Nouveautes v1.2.2
+
+- Overlay flottant sur les pages de visio (draggable, auto-minimize, position memorisee)
+- Login PKCE via onglet normal (gestionnaire de mots de passe compatible)
+- Support `visio.numerique.gouv.fr`
+- Badge REC sur l'icone extension
+- Sync des enregistrements avec le serveur au chargement
+- Reconnexion SSO directe depuis l'overlay
+- Refresh token automatique periodique
 
 ## Fonctionnalites
 
