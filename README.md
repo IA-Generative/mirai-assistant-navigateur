@@ -100,9 +100,6 @@ Modifier `src/dm/config.json` :
 | Visio | `visio.numerique.gouv.fr` | Non |
 | COMU | `webconf.comu.gouv.fr` | Oui (6 chiffres) |
 | Webinaire | `webinaire.numerique.gouv.fr` | Non |
-| Webex | `*.webex.com` | Oui |
-| Google Meet | `meet.google.com` | Non |
-| Teams | `teams.microsoft.com` | Oui |
 
 ## Licence
 
