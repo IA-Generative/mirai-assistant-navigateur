@@ -827,27 +827,38 @@ if (BROWSER?.tabs?.onCreated && BROWSER?.tabs?.onRemoved) {
       footerMsg.style.textDecoration = 'underline';
     }
 
-    const token = await window.MiraiAuth.getValidToken();
-    if (token) {
-      credsValid = true;
-      showConnected(token);
-    } else {
-      credsValid = false;
-      showDisconnected();
-      footerMsg.addEventListener('click', async () => {
-        footerMsg.innerHTML = '<span style="color:#d29922;font-size:9px;margin-right:3px;">&#9679;</span>Connexion...';
-        footerMsg.style.cursor = 'default';
-        footerMsg.style.textDecoration = 'none';
-        footerMsg.style.color = '#666';
-        const loginToken = await window.MiraiAuth.login();
-        if (loginToken) {
-          credsValid = true;
-          showConnected(loginToken);
-        } else {
-          showDisconnected();
-        }
-      });
+    // Check token + refresh if needed, then update UI
+    async function refreshFooterState() {
+      const token = await window.MiraiAuth.getValidToken();
+      if (token) {
+        credsValid = true;
+        showConnected(token);
+      } else {
+        credsValid = false;
+        showDisconnected();
+      }
     }
+
+    await refreshFooterState();
+
+    // Re-check every 60s while popup is open
+    setInterval(refreshFooterState, 60000);
+
+    // Click to login if disconnected
+    footerMsg.addEventListener('click', async () => {
+      if (credsValid) return;
+      footerMsg.innerHTML = '<span style="color:#d29922;font-size:9px;margin-right:3px;">&#9679;</span>Connexion...';
+      footerMsg.style.cursor = 'default';
+      footerMsg.style.textDecoration = 'none';
+      footerMsg.style.color = '#666';
+      const loginToken = await window.MiraiAuth.login();
+      if (loginToken) {
+        credsValid = true;
+        showConnected(loginToken);
+      } else {
+        showDisconnected();
+      }
+    });
 
     const showOverlayBtn = document.getElementById('show-overlay-btn');
     if (showOverlayBtn) {
@@ -855,7 +866,17 @@ if (BROWSER?.tabs?.onCreated && BROWSER?.tabs?.onRemoved) {
         const tabs = await CompatAPI.queryTabs({ active: true, currentWindow: true });
         if (tabs[0]?.id) {
           const B = (typeof browser !== 'undefined') ? browser : chrome;
-          B.tabs.sendMessage(tabs[0].id, { type: 'overlay:show' });
+          try {
+            B.tabs.sendMessage(tabs[0].id, { type: 'overlay:show' }, (resp) => {
+              if (!resp) {
+                showOverlayBtn.textContent = 'Pas de visio';
+                setTimeout(() => { showOverlayBtn.textContent = 'Overlay'; }, 2000);
+              }
+            });
+          } catch (e) {
+            showOverlayBtn.textContent = 'Pas de visio';
+            setTimeout(() => { showOverlayBtn.textContent = 'Overlay'; }, 2000);
+          }
         }
       });
     }

@@ -599,13 +599,17 @@
   closeBtn.addEventListener('click', minimize);
 
   // Listen for show/hide messages from popup or background
-  B.runtime.onMessage.addListener((msg) => {
+  B.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     if (msg?.type === 'overlay:show') {
       overlay.style.display = '';
-      if (isMinimized) expand();
+      // Force expand regardless of isMinimized state
+      isMinimized = true;
+      expand();
+      sendResponse({ ok: true });
     }
     if (msg?.type === 'overlay:hide') {
       overlay.style.display = 'none';
+      sendResponse({ ok: true });
     }
   });
 
